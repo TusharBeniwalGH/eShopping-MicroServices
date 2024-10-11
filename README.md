@@ -1,4 +1,4 @@
-### This is an e-commerce project with different domain encapsulated in different microservices like below :
+### This is an e-commerce project with different domains encapsulated in different microservices like below :
 
 * Basket
 * Catalog
