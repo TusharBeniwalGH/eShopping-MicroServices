@@ -1,3 +1,11 @@
+### This is an e-commerce project with different domain encapsulated in different microservices like below :
+
+* Basket
+* Catalog
+* Ordering
+* Discount
+
+Each of the microservice follows its own disticnt architectural style , database per service pattern as common among them
 
 #### Catalog microservice which includes; 
 * ASP.NET Core Minimal APIs and latest features of .NET8 and C# 12
