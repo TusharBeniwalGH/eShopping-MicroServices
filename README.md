@@ -5,7 +5,7 @@
 * Ordering
 * Discount
 
-Each of the microservice follows its own disticnt architectural style , database per service pattern as common among them
+Each of the microservice follows its own distinct architectural style , database per service pattern is common among them
 
 #### Catalog microservice which includes; 
 * ASP.NET Core Minimal APIs and latest features of .NET8 and C# 12
