@@ -1,3 +1,11 @@
+### This is an e-commerce project with different domains encapsulated in different microservices like below :
+
+* Basket
+* Catalog
+* Ordering
+* Discount
+
+Each of the microservice follows its own distinct architectural style , database per service pattern is common among them
 
 #### Catalog microservice which includes; 
 * ASP.NET Core Minimal APIs and latest features of .NET8 and C# 12
@@ -41,35 +49,3 @@
 * Develop API Gateways with **Yarp Reverse Proxy** applying Gateway Routing Pattern
 * Yarp Reverse Proxy Configuration; Route, Cluster, Path, Transform, Destinations
 * **Rate Limiting** with FixedWindowLimiter on Yarp Reverse Proxy Configuration
-
-#### WebUI ShoppingApp Microservice
-* ASP.NET Core Web Application with Bootstrap 4 and Razor template
-* Call **Yarp APIs with Refit HttpClientFactory**
-
-#### Docker Compose establishment with all microservices on docker;
-* Containerization of microservices
-* Containerization of databases
-* Override Environment variables
-
-## Run The Project
-You will need the following tools:
-
-* [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
-* [.Net Core 8 or later](https://dotnet.microsoft.com/download/dotnet-core/8)
-* [Docker Desktop](https://www.docker.com/products/docker-desktop)
-
-### Installing
-Follow these steps to get your development environment set up: (Before Run Start the Docker Desktop)
-1. Clone the repository
-2. Once Docker for Windows is installed, go to the **Settings > Advanced option**, from the Docker icon in the system tray, to configure the minimum amount of memory and CPU like so:
-* **Memory: 4 GB**
-* CPU: 2
-3. At the root directory of solution, select **docker-compose** and **Set a startup project**. **Run docker-compose without debugging on visual studio**.
-  Or you can go to root directory which include **docker-compose.yml** files, run below command:
-```csharp
-docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
-```
-
-4. Wait for docker compose all microservices. That’s it! (some microservices need extra time to work so please wait if not worked in first shut)
-
-
