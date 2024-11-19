@@ -24,6 +24,18 @@ services:
         - "5433:5432"
     volumes:
       - postgres_basket:/var/lib/postgresql/data/ 
+    
+  identitydb:
+     container_name: identitydb
+     environment:
+       - POSTGRES_USER=postgres
+       - POSTGRES_PASSWORD=postgres
+       - POSTGRES_DB=IdentityDb
+     restart: always
+     ports:
+       - "5434:5432"
+     volumes:
+       - postgres_identity:/var/lib/postgresql/data/
 
   distributedcache:
     container_name: distributedcache
@@ -121,16 +133,36 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
-
+  
+  identity:
+   container_name: identity
+   environment:
+    - KEYCLOAK_ADMIN=admin
+    - KEYCLOAK_ADMIN_PASSWORD=admin
+    - KC_DB=postgres
+    - KC_DB_URL=jdbc:postgresql://identitydb/IdentityDb
+    - KC_DB_USERNAME=postgres
+    - KC_DB_PASSWORD=postgres 
+    - KC_HOSTNAME=http://identity:9090/
+    - KC_HTTP_PORT=9090
+   restart: always
+   ports:
+    - "9090:9090"
+   command:
+    - start-dev
+    
+    
   yarpapigateway:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
+      - Keycloak__AuthServerUrl=http://identity:9090/
     depends_on:
       - catalog.api
       - basket.api
       - ordering.api
+      - identity
     ports:
       - "6004:8080"
       - "6064:8081"
