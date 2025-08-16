@@ -48,4 +48,5 @@ Each of the microservice follows its own distinct architectural style , database
 #### Yarp API Gateway Microservice
 * Develop API Gateways with **Yarp Reverse Proxy** applying Gateway Routing Pattern
 * Yarp Reverse Proxy Configuration; Route, Cluster, Path, Transform, Destinations
+* **KeyCloak** for API Gateway authentication and authorization
 * **Rate Limiting** with FixedWindowLimiter on Yarp Reverse Proxy Configuration
